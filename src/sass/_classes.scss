@@ -1,0 +1,125 @@
+@mixin s-notification-classes(
+	$colors : default primary secondary
+) {
+	@include s-notification-classes-bare();
+	@include s-notification-classes-style();
+	@include s-notification-classes-animation();
+}
+@mixin s-notification-classes-bare() {
+	@include s-component('s-notification') {
+		.#{s-component()}-container {
+			margin: s-space(default);
+		}
+		.#{s-component()} {
+			padding: s-space(default);
+			margin-bottom: s-space(default);
+			border-radius: s-lnf(border-radius);
+			max-width: s-rem(500px);
+			@include s-clearfix;
+		}
+		.#{s-component()}-container[class*="--b"] .#{s-component()} {
+			margin-bottom: 0;
+			margin-top: s-space(default);
+		}
+		.#{s-component()}__title {
+			margin-bottom : s-space(default);
+		}
+		.#{s-component()}__icon ~ .#{s-component()}__title {
+			padding-left: calc(2.4em + #{s-space(default) / 2});
+		}
+		.#{s-component()}__body {
+		}
+		.#{s-component()}__icon ~ .#{s-component()}__body {
+			padding-left: calc(3em + #{s-space(default) / 2});
+		}
+		.#{s-component()}__icon {
+			float : left;
+			font-size:3em;
+		}
+		.#{s-component()}__actions {
+			margin-top : s-space(default);
+			margin-left : s-space(default) / 2 * -1;
+			margin-right : s-space(default) / 2 * -1;
+		}
+		.#{s-component()}__action {
+			margin-left : s-space(default) / 2;
+			margin-right : s-space(default) / 2;
+		}
+	}
+}
+@mixin s-notification-classes-style(
+	$colors : default primary secondary
+) {
+	@include s-component('s-notification') {
+		.#{s-component()} {
+			// @include s-depth(5);
+			background: white;
+			overflow: hidden;
+			// &:hover {
+			// 	@include s-depth(10);
+			// }
+		}
+		.#{s-component()}__title {
+			font-size:1.2em;
+			font-weight: bold;
+		}
+		.#{s-component()}--interactive {
+			@include s-transition(fast);
+			&:hover {
+				background: darken(white,2%);
+			}
+		}
+		@each $color in $colors {
+			.#{s-component()}--#{$color} {
+				background : s-color($color);
+				color : white;
+
+				&.#{s-component()}--interactive {
+					&:hover {
+						background: s-color($color, -darken 5%);
+					}
+				}
+			}
+		}
+	}
+}
+@keyframes s-notification-in {
+	0% {
+		max-height:0;
+		opacity:0;
+		padding-top:0;
+		padding-bottom:0;
+	}
+	50% {
+		opacity:1;
+	}
+	100% {
+		max-height:50vh;
+		opacity:1;
+	}
+}
+@keyframes s-notification-out {
+	0% {
+		max-height:50vh;
+		opacity:1;
+	}
+	50% {
+		opacity:1;
+	}
+	100% {
+		max-height:0;
+		opacity:0;
+		padding-top:0;
+		padding-bottom:0;
+	}
+}
+@mixin s-notification-classes-animation() {
+	@include s-component('s-notification') {
+		.#{s-component()} {
+			animation : s-notification-in .2s ease-in-out forwards;
+		}
+		.#{s-component()}--out {
+			animation : s-notification-out .2s ease-in-out forwards;
+		}
+	}
+}
