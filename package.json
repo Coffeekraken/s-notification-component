@@ -2,6 +2,11 @@
   "name": "coffeekraken-s-notification-component",
   "version": "0.0.1",
   "description": "Display nice and fully customizable toast like notification.",
+  "homepage": "http://coffeekraken.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coffeekraken/s-notification-component"
+  },
   "main": "dist/index.js",
   "scripts": {
     "dist": "npm run dist.js",
@@ -9,8 +14,9 @@
     "dist.watch": "concurrently --kill-others \"npm run dist.watch.js\"",
     "dist.watch.js": "nodemon -w src -e js -x \"npm run dist.js\"",
     "demo": "coffeekraken-code-playground",
-    "doc": "rm -rf doc && npm run doc.js",
+    "doc": "rm -rf doc && npm run doc.js && npm run doc.css",
     "doc.js": "coffeekraken-docblock-to-markdown -f 'src/**/*.js' -d doc --remove-path src/",
+    "doc.css": "coffeekraken-docblock-to-markdown -f 'src/**/*.scss' -d doc --remove-path src/",
     "test": "node_modules/coffeekraken-testing-stack/run"
   },
   "keywords": [
@@ -25,6 +31,13 @@
     "coffeekraken"
   ],
   "author": "Coffeekraken <hello@coffeekraken.io>",
+  "contributors": [
+    {
+      "name": "Olivier Bossel",
+      "email": "olivier.bossel@gmail.com",
+      "url": "http://olivierbossel.com"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "coffeekraken-sugar": "git+ssh://git@github.com/Coffeekraken/sugar.git#release/0.0.1"

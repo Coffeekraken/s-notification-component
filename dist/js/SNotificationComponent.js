@@ -113,21 +113,26 @@ var SNotificationComponent = function (_SWebComponent) {
 				this._refs.container.appendChild(this);
 			}
 
-			// handle dismissable
-			if (this.props.dismissable) {
-				this.addEventListener('click', function (e) {
-					_this2.dismiss();
+			[].forEach.call(this.querySelectorAll('.' + this._componentNameDash + '__actions'), function (dismissElm) {
+				dismissElm.addEventListener('click', function (e) {
+					e.stopPropagation();
 				});
-			}
+			});
 
 			// listen for click on dismiss elements inside notification
 			[].forEach.call(this.querySelectorAll('[' + this._componentNameDash + '-dismiss]'), function (dismissElm) {
 				dismissElm.addEventListener('click', function (e) {
 					var idx = e.currentTarget.getAttribute(_this2._componentNameDash + '-action-idx');
 					_this2.dismiss(_this2.props.actions[idx].value);
-					e.stopPropagation();
 				});
 			});
+
+			// handle dismissable
+			if (this.props.dismissable) {
+				this.addEventListener('click', function (e) {
+					_this2.dismiss();
+				});
+			}
 
 			// handle timeout
 			if (this.props.timeout) {

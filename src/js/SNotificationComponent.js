@@ -248,21 +248,26 @@ export default class SNotificationComponent extends SWebComponent {
 			this._refs.container.appendChild(this);
 		}
 
-		// handle dismissable
-		if (this.props.dismissable) {
-			this.addEventListener('click', (e) => {
-				this.dismiss();
+		[].forEach.call(this.querySelectorAll(`.${this._componentNameDash}__actions`), (dismissElm) => {
+			dismissElm.addEventListener('click', (e) => {
+				e.stopPropagation();
 			});
-		}
+		});
 
 		// listen for click on dismiss elements inside notification
 		[].forEach.call(this.querySelectorAll(`[${this._componentNameDash}-dismiss]`), (dismissElm) => {
 			dismissElm.addEventListener('click', (e) => {
 				const idx = e.currentTarget.getAttribute(`${this._componentNameDash}-action-idx`);
 				this.dismiss(this.props.actions[idx].value);
-				e.stopPropagation();
 			});
 		});
+
+		// handle dismissable
+		if (this.props.dismissable) {
+			this.addEventListener('click', (e) => {
+				this.dismiss();
+			});
+		}
 
 		// handle timeout
 		if (this.props.timeout) {

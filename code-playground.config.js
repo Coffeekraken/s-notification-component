@@ -39,6 +39,9 @@ module.exports = {
 				@import './index';
 				@include s-init();
 				@include s-classes();
+				@include s-button-classes(
+					$colors : primary
+				);
 				@include s-notification-classes(
 					$colors : default primary secondary
 				);
@@ -52,6 +55,20 @@ module.exports = {
 			data : `
 				import 'webcomponents.js/webcomponents-lite'
 				import './dist/index'
+				import SNotificationComponentClass from './dist/class'
+				SNotificationComponentClass.notify({
+					title : "Custom notification",
+					body : "Nulla ac pretium erat, vitae accumsan ex. Cras mattis sem.",
+					dismissable : false,
+					timeout : 10000,
+					actions : [{
+						label : "Go to google",
+						href : "http://google.com",
+						target : "_blank",
+						dismiss : false,
+						class : "btn btn--block btn--primary"
+					}]
+				});
 			`
 		}
 	}

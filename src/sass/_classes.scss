@@ -1,3 +1,18 @@
+/**
+ * @name 		s-notification-classes
+ * This file expose all the s-notification classes generation mixins to quickly style your notifications
+ */
+
+/**
+ * Print out the classes for notifications styling
+ * @param 		{List} 		[$colors=default primary secondary] 		The registered colors to generate
+ * @example 	scss
+ * @import 'node_modules/coffeekraken-s-notification-component/index';
+ * \@include s-notification-classes(
+ * 	$colors : default primary secondary
+ * );
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
 @mixin s-notification-classes(
 	$colors : default primary secondary
 ) {
@@ -5,6 +20,14 @@
 	@include s-notification-classes-style($colors);
 	@include s-notification-classes-animation();
 }
+
+/**
+ * Print out the bare classes for notifications styling
+ * @example 	scss
+ * @import 'node_modules/coffeekraken-s-notification-component/index';
+ * \@include s-notification-classes-bare();
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
 @mixin s-notification-classes-bare() {
 	@include s-component('s-notification') {
 		.#{s-component()}-container {
@@ -47,6 +70,17 @@
 		}
 	}
 }
+
+/**
+ * Print out the style classes for notifications styling
+ * @param 		{List} 		[$colors=default primary secondary] 		The registered colors to generate
+ * @example 	scss
+ * @import 'node_modules/coffeekraken-s-notification-component/index';
+ * \@include s-notification-classes-style(
+ * 	$colors : default primary secondary
+ * );
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
 @mixin s-notification-classes-style(
 	$colors : default primary secondary
 ) {
@@ -83,6 +117,8 @@
 		}
 	}
 }
+
+
 @keyframes s-notification-in {
 	0% {
 		max-height:0;
@@ -113,6 +149,14 @@
 		padding-bottom:0;
 	}
 }
+
+/**
+ * Print out the animation classes for notifications styling
+ * @example 	scss
+ * @import 'node_modules/coffeekraken-s-notification-component/index';
+ * \@include s-notification-classes-animation();
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
 @mixin s-notification-classes-animation() {
 	@include s-component('s-notification') {
 		.#{s-component()} {
