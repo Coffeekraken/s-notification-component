@@ -2,7 +2,7 @@
 	$colors : default primary secondary
 ) {
 	@include s-notification-classes-bare();
-	@include s-notification-classes-style();
+	@include s-notification-classes-style($colors);
 	@include s-notification-classes-animation();
 }
 @mixin s-notification-classes-bare() {
