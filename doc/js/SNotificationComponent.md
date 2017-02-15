@@ -41,25 +41,17 @@ Type : **{ [String](https://developer.mozilla.org/fr/docs/Web/JavaScript/Referen
 Default : **null**
 
 
-### action
-
-Default action on click
-
-Type : **{ [String](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String) }**
-
-Default : **null**
-
-
 ### value
 
 Specify the value that will be passed with the dismiss event when the notification is dismissed by clicking on it
+or when clicking an action that has no value assigned.
 
 Type : **{ Mixed }**
 
 Default : **null**
 
 
-### defaultAction
+### actionsProps
 
 Specify the default action object
 
@@ -98,7 +90,7 @@ Default : **true**
 
 ### type
 
-Specify the notification type
+Specify the notification type for styling purpose
 
 Type : **{ [String](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String) }**
 
@@ -107,7 +99,7 @@ Default : **null**
 
 ### timeout
 
-Specify the live time of the notification
+Specify the life time of the notification
 
 Type : **{ [Number](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Number) }**
 
@@ -139,12 +131,13 @@ Default : **null**
 
 ### notify
 
-Notification factory
+Static notification factory
 
 
 Name  |  Type  |  Description  |  Status  |  Default
 ------------  |  ------------  |  ------------  |  ------------  |  ------------
 props  |  **{ [Object](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object) }**  |  The notification property object  |  required  |
+tagname  |  **{ [String](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String) }**  |  The component tagname to create  |  optional  |  s-notification
 
 Return **{ SNotificationComponent }** The notification dom element
 
@@ -156,6 +149,8 @@ SNotificationComponentClass.notify({
 	body : "In eleifend, tellus scelerisque auctor ultrices, velit neque porttitor ante, non fermentum ligula sem in mauris. Quisque nunc sem, tincidunt."
 });
 ```
+Default : **s-notification') {**
+
 
 ### dismiss
 

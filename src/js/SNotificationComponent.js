@@ -18,6 +18,12 @@ import __getAnimationProperties from 'coffeekraken-sugar/js/dom/getAnimationProp
  * @author 		Olivier Bossel <olivier.bossel@gmail.com>
  */
 
+//
+// * @event
+//  * @name 		dismiss
+//  * Event dispatched when the notification is dismissed. A value is attached to this event if provided.
+// */
+
 export default class SNotificationComponent extends SWebComponent {
 
 	/**
@@ -28,8 +34,9 @@ export default class SNotificationComponent extends SWebComponent {
 	static notificationsContainers = {};
 
 	/**
-	 * Notification factory
+	 * Static notification factory
 	 * @param 		{Object} 		props 		The notification property object
+	 * @param 		{String} 		[tagname=s-notification] 	The component tagname to create
 	 * @return 		{SNotificationComponent} 		The notification dom element
 	 * @example 	js
 	 * import SNotificationComponentClass from 'coffeekraken-s-notification-component/class'
@@ -38,8 +45,8 @@ export default class SNotificationComponent extends SWebComponent {
 	 * 	body : "In eleifend, tellus scelerisque auctor ultrices, velit neque porttitor ante, non fermentum ligula sem in mauris. Quisque nunc sem, tincidunt."
 	 * });
 	 */
-	static notify(props) {
-		const notificationElm = document.createElement('s-notification');
+	static notify(props, tagname = 's-notification') {
+		const notificationElm = document.createElement(tagname);
 		notificationElm.setProps(props);
 		// append to body
 		document.body.appendChild(notificationElm);
@@ -70,14 +77,8 @@ export default class SNotificationComponent extends SWebComponent {
 			body : null,
 
 			/**
-			 * Default action on click
-			 * @prop
-			 * @type 		{String}
-			 */
-			action : null,
-
-			/**
 			 * Specify the value that will be passed with the dismiss event when the notification is dismissed by clicking on it
+			 * or when clicking an action that has no value assigned.
 			 * @prop
 			 * @type 		{Mixed}
 			 */
@@ -88,7 +89,7 @@ export default class SNotificationComponent extends SWebComponent {
 			 * @prop
 			 * @type 		{Object}
 			 */
-			defaultAction : {},
+			actionsProps : {},
 
 			/**
 			 * Specify some actions
@@ -115,14 +116,14 @@ export default class SNotificationComponent extends SWebComponent {
 			dismissable : true,
 
 			/**
-			 * Specify the notification type
+			 * Specify the notification type for styling purpose
 			 * @prop
 			 * @type 		{String}
 			 */
 			type : null,
 
 			/**
-			 * Specify the live time of the notification
+			 * Specify the life time of the notification
 			 * @prop
 			 * @type 		{Number}
 			 */
@@ -352,7 +353,7 @@ export default class SNotificationComponent extends SWebComponent {
 			// create actions
 			this.props.actions.forEach((action, idx) => {
 				// extend default action with action
-				action = __merge({}, this.props.defaultAction, action);
+				action = __merge({}, this.props.actionsProps, action);
 				// create the action html
 				actionsHtml = actionsHtml.concat([
 					`<li class="${this._componentNameDash}__action" ${(action.dismiss) ? `${this._componentNameDash}-dismiss` : ""} ${this._componentNameDash}-action-idx="${idx}">`,
