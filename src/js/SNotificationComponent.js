@@ -160,7 +160,7 @@ export default class SNotificationComponent extends SWebComponent {
 	 * Css
 	 * @protected
 	 */
-	static css(componentName, componentNameDash) {
+	static defaultCss(componentName, componentNameDash) {
 		return `
 			${componentNameDash} {
 				display : block;

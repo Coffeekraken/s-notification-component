@@ -320,14 +320,14 @@ var SNotificationComponent = function (_SWebComponent) {
    */
 
 	}, {
-		key: 'css',
+		key: 'defaultCss',
 
 
 		/**
    * Css
    * @protected
    */
-		value: function css(componentName, componentNameDash) {
+		value: function defaultCss(componentName, componentNameDash) {
 			return '\n\t\t\t' + componentNameDash + ' {\n\t\t\t\tdisplay : block;\n\t\t\t}\n\t\t\t.' + componentNameDash + '-container {\n\t\t\t\tposition: fixed;\n\t\t\t\tz-index:10;\n\t\t\t}\n\t\t\t.' + componentNameDash + '-container.' + componentNameDash + '--tr {\n\t\t\t\ttop: 0; right:0;\n\t\t\t}\n\t\t\t.' + componentNameDash + '-container.' + componentNameDash + '--tl {\n\t\t\t\ttop: 0; left:0;\n\t\t\t}\n\t\t\t.' + componentNameDash + '-container.' + componentNameDash + '--t {\n\t\t\t\ttop: 0; left:50%;\n\t\t\t\ttransform: translateX(-50%);\n\t\t\t}\n\t\t\t.' + componentNameDash + '-container.' + componentNameDash + '--br {\n\t\t\t\tbottom: 0; right:0;\n\t\t\t}\n\t\t\t.' + componentNameDash + '-container.' + componentNameDash + '--bl {\n\t\t\t\tbottom: 0; left:0;\n\t\t\t}\n\t\t\t.' + componentNameDash + '-container.' + componentNameDash + '--b {\n\t\t\t\tbottom: 0; left:50%;\n\t\t\t\ttransform: translateX(-50%);\n\t\t\t}\n\t\t\t.' + componentNameDash + '--interactive {\n\t\t\t\tcursor:pointer;\n\t\t\t}\n\t\t\t.' + componentNameDash + '__actions {\n\t\t\t\tdisplay: flex;\n\t\t\t\tflex-flow: row wrap;\n\t\t\t\tlist-style: none;\n\t\t\t}\n\t\t\t.' + componentNameDash + '__action {\n\t\t\t\tflex:1 1 auto;\n\t\t\t\tcursor: pointer;\n\t\t\t}\n\t\t';
 		}
 	}, {
