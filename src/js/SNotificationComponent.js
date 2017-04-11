@@ -13,12 +13,14 @@ import __getAnimationProperties from 'coffeekraken-sugar/js/dom/getAnimationProp
  * - Actions management
  * - Dismissable option allow to dismiss notification by click on it
  *
+ * @styleguide 		Objects / Notification
  * @example 	html
  * <s-notification title="Hello World" body="Pellentesque fringilla velit at tempor eleifend. Vestibulum finibus lacus et."></s-notification>
  * @author 		Olivier Bossel <olivier.bossel@gmail.com>
  */
 
 //
+// @TODO : add event support in documentation
 // * @event
 //  * @name 		dismiss
 //  * Event dispatched when the notification is dismissed. A value is attached to this event if provided.

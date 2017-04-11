@@ -112,6 +112,8 @@ Specify the side where the notification has to appear
 
 Type : **{ [String](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String) }**
 
+Values : **tl,t,tr,bl,b,br**
+
 Default : **tr**
 
 
@@ -120,8 +122,6 @@ Default : **tr**
 Callback on dismiss
 
 Type : **{ [Function](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Function) }**
-
-Default : **null**
 
 
 
@@ -149,7 +149,7 @@ SNotificationComponentClass.notify({
 	body : "In eleifend, tellus scelerisque auctor ultrices, velit neque porttitor ante, non fermentum ligula sem in mauris. Quisque nunc sem, tincidunt."
 });
 ```
-Default : **s-notification') {**
+**Static**
 
 
 ### dismiss
@@ -160,5 +160,3 @@ Dismiss the notification
 Name  |  Type  |  Description  |  Status  |  Default
 ------------  |  ------------  |  ------------  |  ------------  |  ------------
 data  |  **{ Mixed }**  |  The data passed to the dismiss  |  optional  |  null
-
-Default : **null) {**
