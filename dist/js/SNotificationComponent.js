@@ -46,6 +46,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  */
 
 //
+// @TODO : add event support in documentation
 // * @event
 //  * @name 		dismiss
 //  * Event dispatched when the notification is dismissed. A value is attached to this event if provided.
