@@ -13,7 +13,6 @@ import __getAnimationProperties from 'coffeekraken-sugar/js/dom/getAnimationProp
  * - Actions management
  * - Dismissable option allow to dismiss notification by click on it
  *
- * @styleguide 		Objects / Notification
  * @example 	html
  * <s-notification title="Hello World" body="Pellentesque fringilla velit at tempor eleifend. Vestibulum finibus lacus et."></s-notification>
  * @author 		Olivier Bossel <olivier.bossel@gmail.com>
@@ -36,7 +35,7 @@ export default class SNotificationComponent extends SWebComponent {
 	static notificationsContainers = {};
 
 	/**
-	 * Static notification factory
+	 * Static notification factory. You need to have the actual component registered into your page.
 	 * @param 		{Object} 		props 		The notification property object
 	 * @param 		{String} 		[tagname=s-notification] 	The component tagname to create
 	 * @return 		{SNotificationComponent} 		The notification dom element
