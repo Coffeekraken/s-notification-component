@@ -30,6 +30,28 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * @name 		SNotificationComponent
+ * @extends 	SWebComponent
+ * Display nice and fully customizable toast like notification.
+ * Features :
+ * - Align on the side you want
+ * - Quick title, body and icon options
+ * - Actions management
+ * - Dismissable option allow to dismiss notification by click on it
+ *
+ * @example 	html
+ * <s-notification title="Hello World" body="Pellentesque fringilla velit at tempor eleifend. Vestibulum finibus lacus et."></s-notification>
+ * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+ */
+
+//
+// @TODO : add event support in documentation
+// * @event
+//  * @name 		dismiss
+//  * Event dispatched when the notification is dismissed. A value is attached to this event if provided.
+// */
+
 var SNotificationComponent = function (_SWebComponent) {
 	_inherits(SNotificationComponent, _SWebComponent);
 
@@ -92,21 +114,26 @@ var SNotificationComponent = function (_SWebComponent) {
 				this._refs.container.appendChild(this);
 			}
 
-			// handle dismissable
-			if (this.props.dismissable) {
-				this.addEventListener('click', function (e) {
-					_this2.dismiss();
+			[].forEach.call(this.querySelectorAll('.' + this._componentNameDash + '__actions'), function (dismissElm) {
+				dismissElm.addEventListener('click', function (e) {
+					e.stopPropagation();
 				});
-			}
+			});
 
 			// listen for click on dismiss elements inside notification
 			[].forEach.call(this.querySelectorAll('[' + this._componentNameDash + '-dismiss]'), function (dismissElm) {
 				dismissElm.addEventListener('click', function (e) {
 					var idx = e.currentTarget.getAttribute(_this2._componentNameDash + '-action-idx');
 					_this2.dismiss(_this2.props.actions[idx].value);
-					e.stopPropagation();
 				});
 			});
+
+			// handle dismissable
+			if (this.props.dismissable) {
+				this.addEventListener('click', function (e) {
+					_this2.dismiss();
+				});
+			}
 
 			// handle timeout
 			if (this.props.timeout) {
@@ -201,7 +228,7 @@ var SNotificationComponent = function (_SWebComponent) {
 				// create actions
 				this.props.actions.forEach(function (action, idx) {
 					// extend default action with action
-					action = (0, _merge2.default)({}, _this3.props.defaultAction, action);
+					action = (0, _merge2.default)({}, _this3.props.actionsProps, action);
 					// create the action html
 					actionsHtml = actionsHtml.concat(['<li class="' + _this3._componentNameDash + '__action" ' + (action.dismiss ? _this3._componentNameDash + '-dismiss' : "") + ' ' + _this3._componentNameDash + '-action-idx="' + idx + '">', '<a class="' + _this3._componentNameDash + '__action-link ' + (action.class ? action.class : '') + '" ' + (action.href ? 'href="' + action.href + '"' : '') + ' ' + (action.target ? 'target="' + action.target + '"' : '') + '>', action.label, '</a>', '</li>']);
 				});
@@ -258,10 +285,21 @@ var SNotificationComponent = function (_SWebComponent) {
 
 
 		/**
-   * Notification factory
+   * Static notification factory. You need to have the actual component registered into your page.
+   * @param 		{Object} 		props 		The notification property object
+   * @param 		{String} 		[tagname=s-notification] 	The component tagname to create
+   * @return 		{SNotificationComponent} 		The notification dom element
+   * @example 	js
+   * import SNotificationComponentClass from 'coffeekraken-s-notification-component/class'
+   * SNotificationComponentClass.notify({
+   * 	title : "Hello World",
+   * 	body : "In eleifend, tellus scelerisque auctor ultrices, velit neque porttitor ante, non fermentum ligula sem in mauris. Quisque nunc sem, tincidunt."
+   * });
    */
 		value: function notify(props) {
-			var notificationElm = document.createElement('s-notification');
+			var tagname = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 's-notification';
+
+			var notificationElm = document.createElement(tagname);
 			notificationElm.setProps(props);
 			// append to body
 			document.body.appendChild(notificationElm);
@@ -283,14 +321,14 @@ var SNotificationComponent = function (_SWebComponent) {
    */
 
 	}, {
-		key: 'css',
+		key: 'defaultCss',
 
 
 		/**
    * Css
    * @protected
    */
-		value: function css(componentName, componentNameDash) {
+		value: function defaultCss(componentName, componentNameDash) {
 			return '\n\t\t\t' + componentNameDash + ' {\n\t\t\t\tdisplay : block;\n\t\t\t}\n\t\t\t.' + componentNameDash + '-container {\n\t\t\t\tposition: fixed;\n\t\t\t\tz-index:10;\n\t\t\t}\n\t\t\t.' + componentNameDash + '-container.' + componentNameDash + '--tr {\n\t\t\t\ttop: 0; right:0;\n\t\t\t}\n\t\t\t.' + componentNameDash + '-container.' + componentNameDash + '--tl {\n\t\t\t\ttop: 0; left:0;\n\t\t\t}\n\t\t\t.' + componentNameDash + '-container.' + componentNameDash + '--t {\n\t\t\t\ttop: 0; left:50%;\n\t\t\t\ttransform: translateX(-50%);\n\t\t\t}\n\t\t\t.' + componentNameDash + '-container.' + componentNameDash + '--br {\n\t\t\t\tbottom: 0; right:0;\n\t\t\t}\n\t\t\t.' + componentNameDash + '-container.' + componentNameDash + '--bl {\n\t\t\t\tbottom: 0; left:0;\n\t\t\t}\n\t\t\t.' + componentNameDash + '-container.' + componentNameDash + '--b {\n\t\t\t\tbottom: 0; left:50%;\n\t\t\t\ttransform: translateX(-50%);\n\t\t\t}\n\t\t\t.' + componentNameDash + '--interactive {\n\t\t\t\tcursor:pointer;\n\t\t\t}\n\t\t\t.' + componentNameDash + '__actions {\n\t\t\t\tdisplay: flex;\n\t\t\t\tflex-flow: row wrap;\n\t\t\t\tlist-style: none;\n\t\t\t}\n\t\t\t.' + componentNameDash + '__action {\n\t\t\t\tflex:1 1 auto;\n\t\t\t\tcursor: pointer;\n\t\t\t}\n\t\t';
 		}
 	}, {
@@ -313,14 +351,8 @@ var SNotificationComponent = function (_SWebComponent) {
 				body: null,
 
 				/**
-     * Default action on click
-     * @prop
-     * @type 		{String}
-     */
-				action: null,
-
-				/**
      * Specify the value that will be passed with the dismiss event when the notification is dismissed by clicking on it
+     * or when clicking an action that has no value assigned.
      * @prop
      * @type 		{Mixed}
      */
@@ -331,11 +363,12 @@ var SNotificationComponent = function (_SWebComponent) {
      * @prop
      * @type 		{Object}
      */
-				defaultAction: {},
+				actionsProps: {},
 
 				/**
      * Specify some actions
      * Action object:
+     * ```
      * {
      * 	label : 'Ok',
      * 	dismiss : true,
@@ -343,6 +376,7 @@ var SNotificationComponent = function (_SWebComponent) {
      * 	href : null,
      * 	target : '_blank'
      * }
+     * ```
      * @prop
      * @type 		{String}
      */
@@ -356,14 +390,14 @@ var SNotificationComponent = function (_SWebComponent) {
 				dismissable: true,
 
 				/**
-     * Specify the notification type
+     * Specify the notification type for styling purpose
      * @prop
      * @type 		{String}
      */
 				type: null,
 
 				/**
-     * Specify the live time of the notification
+     * Specify the life time of the notification
      * @prop
      * @type 		{Number}
      */
