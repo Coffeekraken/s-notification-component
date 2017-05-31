@@ -131,7 +131,7 @@ Type : **{ [Function](https://developer.mozilla.org/fr/docs/Web/JavaScript/Refer
 
 ### notify
 
-Static notification factory
+Static notification factory. You need to have the actual component registered into your page.
 
 
 Name  |  Type  |  Description  |  Status  |  Default

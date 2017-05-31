@@ -1,6 +1,6 @@
 module.exports = {
 	// server port
-	port : 3002,
+	port : 3000,
 
 	// logo
 	logo : null,
@@ -15,7 +15,7 @@ module.exports = {
 	compileServer : {
 
 		// compile server port
-		port : 4002
+		port : 4000
 
 	},
 

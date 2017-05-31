@@ -35,7 +35,7 @@ export default class SNotificationComponent extends SWebComponent {
 	static notificationsContainers = {};
 
 	/**
-	 * Static notification factory
+	 * Static notification factory. You need to have the actual component registered into your page.
 	 * @param 		{Object} 		props 		The notification property object
 	 * @param 		{String} 		[tagname=s-notification] 	The component tagname to create
 	 * @return 		{SNotificationComponent} 		The notification dom element
