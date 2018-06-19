@@ -1,3 +1,5 @@
+'use strict';
+
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
@@ -213,8 +215,10 @@ var SNotificationComponent = function (_SWebComponent) {
 			var _this3 = this;
 
 			// template
-			var metasHtml = [];
-			metasElm = document.createElement('div'), actionsHtml = [], actionsElm = document.createElement('ul');
+			var metasHtml = [],
+			    metasElm = document.createElement('div'),
+			    actionsHtml = [],
+			    actionsElm = document.createElement('ul');
 			if (this.props.icon) {
 				metasHtml = metasHtml.concat(['<i class="' + this.props.icon + ' ' + this._componentNameDash + '__icon"></i>']);
 			}
@@ -372,13 +376,12 @@ var SNotificationComponent = function (_SWebComponent) {
      * {
      * 	label : 'Ok',
      * 	dismiss : true,
-     * 	data : 'Any data you want to pass on click',
      * 	href : null,
      * 	target : '_blank'
      * }
      * ```
      * @prop
-     * @type 		{String}
+     * @type 		{Array<Object>}
      */
 				actions: [],
 
@@ -430,7 +433,7 @@ var SNotificationComponent = function (_SWebComponent) {
 	}, {
 		key: 'physicalProps',
 		get: function get() {
-			return [];
+			return ['type'];
 		}
 	}]);
 
