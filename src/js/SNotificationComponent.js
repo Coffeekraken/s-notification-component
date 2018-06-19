@@ -99,13 +99,12 @@ export default class SNotificationComponent extends SWebComponent {
 			 * {
 			 * 	label : 'Ok',
 			 * 	dismiss : true,
-			 * 	data : 'Any data you want to pass on click',
 			 * 	href : null,
 			 * 	target : '_blank'
 			 * }
 			 * ```
 			 * @prop
-			 * @type 		{String}
+			 * @type 		{Array<Object>}
 			 */
 			actions : [],
 
@@ -154,7 +153,7 @@ export default class SNotificationComponent extends SWebComponent {
 	 * @protected
 	 */
 	static get physicalProps() {
-		return [];
+		return ['type'];
 	}
 
 	/**
@@ -332,7 +331,7 @@ export default class SNotificationComponent extends SWebComponent {
 	 */
 	_buildHtml() {
 		// template
-		let metasHtml = []
+		let metasHtml = [],
 			metasElm = document.createElement('div'),
 			actionsHtml = [],
 			actionsElm = document.createElement('ul');

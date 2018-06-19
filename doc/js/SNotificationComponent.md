@@ -68,13 +68,12 @@ Action object:
 {
 	label : 'Ok',
 	dismiss : true,
-	data : 'Any data you want to pass on click',
 	href : null,
 	target : '_blank'
 }
 ```
 
-Type : **{ [String](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String) }**
+Type : **{ Array<Object> }**
 
 Default : **[]**
 
