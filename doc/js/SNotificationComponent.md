@@ -14,14 +14,14 @@ Features :
 ```html
 	<s-notification title="Hello World" body="Pellentesque fringilla velit at tempor eleifend. Vestibulum finibus lacus et."></s-notification>
 ```
-Author : Olivier Bossel <olivier.bossel@gmail.com>
+Author : Olivier Bossel [olivier.bossel@gmail.com](mailto:olivier.bossel@gmail.com)
 
 
 
 
 ## Attributes
 
-Here's the list of available attribute to set on the element.
+Here's the list of available attribute(s).
 
 ### title
 
@@ -122,6 +122,8 @@ Callback on dismiss
 
 Type : **{ [Function](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Function) }**
 
+Default : **null**
+
 
 
 
@@ -133,6 +135,7 @@ Type : **{ [Function](https://developer.mozilla.org/fr/docs/Web/JavaScript/Refer
 Static notification factory. You need to have the actual component registered into your page.
 
 
+#### Parameters
 Name  |  Type  |  Description  |  Status  |  Default
 ------------  |  ------------  |  ------------  |  ------------  |  ------------
 props  |  **{ [Object](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object) }**  |  The notification property object  |  required  |
@@ -156,6 +159,7 @@ SNotificationComponentClass.notify({
 Dismiss the notification
 
 
+#### Parameters
 Name  |  Type  |  Description  |  Status  |  Default
 ------------  |  ------------  |  ------------  |  ------------  |  ------------
 data  |  **{ Mixed }**  |  The data passed to the dismiss  |  optional  |  null

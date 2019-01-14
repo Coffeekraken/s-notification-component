@@ -1,6 +1,6 @@
 {
   "name": "coffeekraken-s-notification-component",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Display nice and fully customizable toast like notification.",
   "homepage": "http://coffeekraken.io",
   "repository": {
@@ -62,9 +62,9 @@
     ]
   },
   "dependencies": {
-    "coffeekraken-sugar": "^1.0.0",
     "coffeekraken-s-button-component": "^1.0.1",
-    "coffeekraken-s-typography-component": "^1.0.0"
+    "coffeekraken-s-typography-component": "^1.0.0",
+    "coffeekraken-sugar": "^1.0.39"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
