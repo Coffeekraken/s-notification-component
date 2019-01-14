@@ -304,9 +304,10 @@ var SNotificationComponent = function (_SWebComponent) {
 			var tagname = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 's-notification';
 
 			var notificationElm = document.createElement(tagname);
-			notificationElm.setProps(props);
 			// append to body
 			document.body.appendChild(notificationElm);
+			// set props
+			notificationElm.setProps(props);
 			// return the notification elm
 			return notificationElm;
 		}

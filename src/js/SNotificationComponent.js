@@ -48,9 +48,10 @@ export default class SNotificationComponent extends SWebComponent {
 	 */
 	static notify(props, tagname = 's-notification') {
 		const notificationElm = document.createElement(tagname);
-		notificationElm.setProps(props);
 		// append to body
 		document.body.appendChild(notificationElm);
+		// set props
+		notificationElm.setProps(props);
 		// return the notification elm
 		return notificationElm;
 	}

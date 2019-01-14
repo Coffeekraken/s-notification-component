@@ -11,6 +11,7 @@ This file expose all the s-notification classes generation mixins to quickly sty
 Print out the classes for notifications styling
 
 
+#### Parameters
 Name  |  Type  |  Description  |  Status  |  Default
 ------------  |  ------------  |  ------------  |  ------------  |  ------------
 $colors  |  **{ [List](http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#lists) }**  |  The registered colors to generate  |  optional  |  default primary secondary
@@ -21,7 +22,7 @@ $colors  |  **{ [List](http://www.sass-lang.com/documentation/file.SASS_REFERENC
 	$colors : default primary secondary
 );
 ```
-Author : Olivier Bossel <olivier.bossel@gmail.com>
+Author : Olivier Bossel [olivier.bossel@gmail.com](mailto:olivier.bossel@gmail.com)
 
 
 ### s-notification-classes-bare
@@ -32,7 +33,7 @@ Print out the bare classes for notifications styling
 ```scss
 	@include s-notification-classes-bare();
 ```
-Author : Olivier Bossel <olivier.bossel@gmail.com>
+Author : Olivier Bossel [olivier.bossel@gmail.com](mailto:olivier.bossel@gmail.com)
 
 
 ### s-notification-classes-style
@@ -40,6 +41,7 @@ Author : Olivier Bossel <olivier.bossel@gmail.com>
 Print out the style classes for notifications styling
 
 
+#### Parameters
 Name  |  Type  |  Description  |  Status  |  Default
 ------------  |  ------------  |  ------------  |  ------------  |  ------------
 $colors  |  **{ [List](http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#lists) }**  |  The registered colors to generate  |  optional  |  default primary secondary
@@ -50,7 +52,7 @@ $colors  |  **{ [List](http://www.sass-lang.com/documentation/file.SASS_REFERENC
 	$colors : default primary secondary
 );
 ```
-Author : Olivier Bossel <olivier.bossel@gmail.com>
+Author : Olivier Bossel [olivier.bossel@gmail.com](mailto:olivier.bossel@gmail.com)
 
 
 ### s-notification-classes-animation
@@ -61,4 +63,4 @@ Print out the animation classes for notifications styling
 ```scss
 	@include s-notification-classes-animation();
 ```
-Author : Olivier Bossel <olivier.bossel@gmail.com>
+Author : Olivier Bossel [olivier.bossel@gmail.com](mailto:olivier.bossel@gmail.com)
